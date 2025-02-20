@@ -55,4 +55,4 @@ jobs:
     
     - name: Run basic dbt model
       run: |
-        dbt run --models stg_venues
+        dbt run --profiles-dir ~/.dbt
