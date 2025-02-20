@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: '0 7 * * 1' 
 
+env:
+  # dbt env variables used in your dbt profiles.yml
+  DBT_PROFILES_DIR: ./
+  DBT_GOOGLE_KEYFILE: /tmp/google/google-service-account.json
+
 jobs:
   run-query:
     runs-on: ubuntu-latest
@@ -19,6 +24,10 @@ jobs:
       with:
         credentials_json: '${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}'
 
+    # Prep Google keyfile
+    - run: mkdir -p "$(dirname $DBT_GOOGLE_KEYFILE)" 
+    - run: echo "$KEYFILE_CONTENTS" > $DBT_GOOGLE_KEYFILE
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -29,19 +38,10 @@ jobs:
         pip install --upgrade pip
         pip install dbt-bigquery dbt-core
 
-    - name: List project files
-      run: |
-        echo "Listing files in the root directory"
-          ls -R
-    
     - name: Authenticate to Google Cloud
       run: |
         echo "${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}" > "${{ github.workspace }}/gha-creds.json"
         export GOOGLE_APPLICATION_CREDENTIALS="${{ github.workspace }}/gha-creds.json"
-
-    - name: List contents of directory
-      run: |
-        ls -al /home/runner/work/meetup_dbt/meetup_dbt/
 
     - name: Run basic dbt model
       run: |
