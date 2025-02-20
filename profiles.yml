@@ -1,6 +1,6 @@
 version: 2
 
-base-dbt-profile:
+base_dbt_profile:
   target: dbt
   outputs:
     dbt:
