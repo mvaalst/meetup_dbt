@@ -38,7 +38,11 @@ jobs:
       run: |
         echo "${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}" > "${{ github.workspace }}/gha-creds.json"
         export GOOGLE_APPLICATION_CREDENTIALS="${{ github.workspace }}/gha-creds.json"
-    
-    - name: Run basic dbt model
+
+    - name: List contents of directory
       run: |
-        dbt run --models stg_venues
+        ls -al /home/runner/work/meetup_dbt/meetup_dbt/
+
+    # - name: Run basic dbt model
+    #   run: |
+    #     dbt run --models stg_venues
