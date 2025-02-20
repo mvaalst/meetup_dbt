@@ -32,7 +32,7 @@ jobs:
     # Step 4: Set up DBT profiles (credentials to connect to the database)
     - name: Configure DBT profile
       run: |
-        mkdir -p ~/meetup_dbt
+        mkdir -p ~/meetup_dbt/meetup_dbt
         echo "base-dbt-profile:
           target: dbt
           outputs:
@@ -43,10 +43,10 @@ jobs:
               project: striped-torus-445510-c9
               schema: dbt
               location: US
-        " > ~/meetup_dbt/profiles.yml
+        " > ~/meetup_dbt/meetup_dbt/profiles.yml
 
     - name: Display profiles.yml content
-      run: cat ~/meetup_dbt/profiles.yml
+      run: cat ~/meetup_dbt/meetup_dbt/profiles.yml
 
     - name: Authenticate to Google Cloud
       run: |
