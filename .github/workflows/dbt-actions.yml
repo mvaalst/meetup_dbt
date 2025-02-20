@@ -62,4 +62,4 @@ jobs:
     - name: Run basic dbt model
       run: |
         cd ~/meetup_dbt/meetup_dbt
-        dbt run
+        dbt run --models stg_venues
