@@ -1,0 +1,12 @@
+name: base-dbt-project
+
+config-version: 2
+version: '1.0'
+
+profile: base-dbt-profile
+
+model-paths: ["models"]
+test-paths: ["tests"]
+
+models:
+    materialized: table

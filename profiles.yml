@@ -1,0 +1,12 @@
+version: 2
+
+base-dbt-profile:
+  target: dbt
+  outputs:
+    dbt:
+      threads: 4
+      type: bigquery
+      method: service-account
+      project: striped-torus-445510-c9
+      schema: dbt
+      location: US

@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_venues
+    description: "Staging model loading in raw venues data"
+    columns:
+      - name: venue_id
+        description: "Unique identifier for the venue"
+        tests:
+          - unique
+          - not_null
