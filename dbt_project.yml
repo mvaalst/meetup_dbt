@@ -1,4 +1,4 @@
-name: base-dbt-project
+name: base_dbt_project
 
 config-version: 2
 version: '1.0'
