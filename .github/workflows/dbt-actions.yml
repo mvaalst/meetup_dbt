@@ -43,10 +43,10 @@ jobs:
               project: striped-torus-445510-c9
               schema: dbt
               location: US
-        " > ~/.dbt/profiles.yml
+        " > ~/meetup_dbt/profiles.yml
 
     - name: Display profiles.yml content
-      run: cat ~/.dbt/profiles.yml
+      run: cat ~/meetup_dbt/profiles.yml
 
     - name: Authenticate to Google Cloud
       run: |
