@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install google-cloud-bigquery google-auth pandas db-dtypes dbt-bigquery
+        pip install google-cloud-bigquery google-auth pandas db-dtypes dbt-bigquery dbt-core
     
     # Step 4: Set up DBT profiles (credentials to connect to the database)
     - name: Configure DBT profile
@@ -45,11 +45,14 @@ jobs:
               location: US
         " > ~/.dbt/profiles.yml
 
+    - name: Display profiles.yml content
+      run: cat ~/.dbt/profiles.yml
+
     - name: Authenticate to Google Cloud
       run: |
         echo "${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}" > "${{ github.workspace }}/gha-creds.json"
         export GOOGLE_APPLICATION_CREDENTIALS="${{ github.workspace }}/gha-creds.json"
     
-    - name: Run basic dbt model
-      run: |
-        dbt run --models stg_venues
+    # - name: Run basic dbt model
+    #   run: |
+    #     dbt run --models stg_venues
