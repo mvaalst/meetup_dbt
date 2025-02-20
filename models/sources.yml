@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: striped-torus-445510-c9
+    schema: raw_data
+    tables:
+      - name: events
+      - name: groups
+      - name: users
+      - name: venues

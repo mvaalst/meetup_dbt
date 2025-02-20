@@ -27,13 +27,13 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install google-cloud-bigquery google-auth pandas db-dtypes
+        pip install google-cloud-bigquery google-auth pandas db-dtypes dbt-bigquery
 
     - name: Authenticate to Google Cloud
       run: |
         echo "${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}" > "${{ github.workspace }}/gha-creds.json"
         export GOOGLE_APPLICATION_CREDENTIALS="${{ github.workspace }}/gha-creds.json"
     
-    - name: Run basic script
+    - name: Run basic dbt model
       run: |
-        python script.py
+        dbt run --models stg_venues
