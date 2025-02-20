@@ -7,7 +7,7 @@ base_dbt_profile:
       threads: 4
       type: bigquery
       method: service-account
-      keyfile: GOOGLE_APPLICATION_CREDENTIALS
+      keyfile: "{{ env_var('DBT_GOOGLE_KEYFILE') }}"
       project: striped-torus-445510-c9
       schema: dbt
       location: US
