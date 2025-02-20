@@ -28,6 +28,22 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install google-cloud-bigquery google-auth pandas db-dtypes dbt-bigquery
+    
+    # Step 4: Set up DBT profiles (credentials to connect to the database)
+    - name: Configure DBT profile
+      run: |
+        mkdir -p ~/.dbt
+        echo "base-dbt-profile:
+          target: dbt
+          outputs:
+            dbt:
+              threads: 4
+              type: bigquery
+              method: service-account
+              project: striped-torus-445510-c9
+              schema: dbt
+              location: US
+        " > ~/.dbt/profiles.yml
 
     - name: Authenticate to Google Cloud
       run: |
