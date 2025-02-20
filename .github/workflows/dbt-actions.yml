@@ -53,6 +53,6 @@ jobs:
         echo "${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}" > "${{ github.workspace }}/gha-creds.json"
         export GOOGLE_APPLICATION_CREDENTIALS="${{ github.workspace }}/gha-creds.json"
     
-    # - name: Run basic dbt model
-    #   run: |
-    #     dbt run --models stg_venues
+    - name: Run basic dbt model
+      run: |
+        dbt run --models stg_venues
