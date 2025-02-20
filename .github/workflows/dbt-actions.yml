@@ -40,16 +40,16 @@ jobs:
               project: striped-torus-445510-c9
               schema: dbt
               location: US
-        " > ~/meetup_dbt/meetup_dbt/profiles.yml
+        " > ~/meetup_dbt/profiles.yml
 
     - name: Create dbt_project.yml file
       run: |
         echo "name: 'meetup_dbt'
         version: '1.0'
-        profile: 'base-dbt-profile'" > ~/meetup_dbt/meetup_dbt/dbt_project.yml
+        profile: 'base-dbt-profile'" > ~/meetup_dbt/dbt_project.yml
 
     - name: Display profiles.yml content
-      run: cat ~/meetup_dbt/meetup_dbt/profiles.yml
+      run: cat ~/meetup_dbt/profiles.yml
 
     - name: Authenticate to Google Cloud
       run: |
@@ -58,5 +58,5 @@ jobs:
     
     - name: Run basic dbt model
       run: |
-        cd ~/meetup_dbt/meetup_dbt
+        cd ~/meetup_dbt
         dbt run --models stg_venues
