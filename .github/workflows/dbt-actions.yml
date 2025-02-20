@@ -19,52 +19,26 @@ jobs:
       with:
         credentials_json: '${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}'
 
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install dbt-bigquery dbt-core
+
     - name: List project files
       run: |
         echo "Listing files in the root directory"
           ls -R
-
-    # - name: Set up Python
-    #   uses: actions/setup-python@v4
-    #   with:
-    #     python-version: '3.13'
-
-    # - name: Install dependencies
-    #   run: |
-    #     pip install --upgrade pip
-    #     pip install google-cloud-bigquery google-auth pandas db-dtypes dbt-bigquery dbt-core
     
-    # # Step 4: Set up DBT profiles (credentials to connect to the database)
-    # - name: Configure DBT profile
-    #   run: |
-    #     mkdir -p ~/meetup_dbt/meetup_dbt
-    #     echo "base-dbt-profile:
-    #       target: dbt
-    #       outputs:
-    #         dbt:
-    #           threads: 4
-    #           type: bigquery
-    #           method: service-account
-    #           project: striped-torus-445510-c9
-    #           schema: dbt
-    #           location: US
-    #     " > ~/meetup_dbt/profiles.yml
-
-    # - name: Create dbt_project.yml file
-    #   run: |
-    #     echo "name: 'meetup_dbt'
-    #     version: '1.0'
-    #     profile: 'base-dbt-profile'" > ~/meetup_dbt/dbt_project.yml
-
-    # - name: Display profiles.yml content
-    #   run: cat ~/meetup_dbt/profiles.yml
-
-    # - name: Authenticate to Google Cloud
-    #   run: |
-    #     echo "${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}" > "${{ github.workspace }}/gha-creds.json"
-    #     export GOOGLE_APPLICATION_CREDENTIALS="${{ github.workspace }}/gha-creds.json"
+    - name: Authenticate to Google Cloud
+      run: |
+        echo "${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}" > "${{ github.workspace }}/gha-creds.json"
+        export GOOGLE_APPLICATION_CREDENTIALS="${{ github.workspace }}/gha-creds.json"
     
-    # - name: Run basic dbt model
-    #   run: |
-    #     cd ~/meetup_dbt
-    #     dbt run --models stg_venues
+    - name: Run basic dbt model
+      run: |
+        dbt run --models stg_venues
