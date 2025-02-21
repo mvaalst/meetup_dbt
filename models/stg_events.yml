@@ -20,8 +20,6 @@ models:
           - not_null
       - name: meetup_time
         description: "Date and time the meetup will take or has taken place"
-        tests:
-          - not_null
       - name: duration
         description: "Duration of the meetup in minutes"
       - name: rsvp_limit

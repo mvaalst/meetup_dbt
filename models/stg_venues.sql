@@ -6,5 +6,5 @@ FROM stg_venues
 WHERE
     LOWER(country) IN ("nl", "be", "de")
     AND city IS NOT NULL
-    AND venue_name IS NOT NULL
+    AND venue_id IS NOT NULL
     AND country IS NOT NULL
