@@ -1,7 +1,13 @@
 WITH stg_venues AS (
     SELECT * FROM {{ source('raw_data', 'venues') }}
 )
-SELECT * 
+SELECT
+    city AS venue_city,
+    country AS venue_country,
+    name AS venue_name,
+    lon,
+    lat,
+    venue_id
 FROM stg_venues
 WHERE
     LOWER(country) IN ("nl", "be", "de")

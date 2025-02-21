@@ -8,11 +8,11 @@ models:
         description: "Unique identifier for the group"
         tests:
           - not_null
-      - name: name
+      - name: meetup_name
         description: "Name of the meetup"
         tests:
           - not_null
-      - name: description
+      - name: meetup_description
         description: "Description of the meetup"
       - name: meetup_created
         description: "Date and time the meetup was created"
