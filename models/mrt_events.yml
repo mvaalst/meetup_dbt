@@ -9,6 +9,7 @@ models:
             - group_id
             - meetup_name
             - meetup_time
+            - venue_id
     columns:
       - name: group_id
         description: "Unique identifier for the group"
