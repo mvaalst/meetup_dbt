@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: mrt_groups
+    description: "Mart model for group information"
+    columns:
+      - name: group_id
+        description: "Unique identifier for the group"
+        tests:
+          - not_null
+          - unique
+      - name: group_city
+        description: "Country where the group is located"
+      - name: group_created
+        description: "Date the group was created"
+      - name: group_description
+        description: "Description of the group"
+      - name: group_name
+        description: "Name of the group"
+        tests:
+          - not_null
+      - name: cnt_topics
+        description: "Count of different topics group is interested in"
+      - name: cnt_members
+        description: "Count of members in the group"
+      - name: first_joiner
+        description: "Date of the first member joining the group"
+      - name: last_joiner
+        description: "Date of the last member joining the group"
+      - name: cnt_countries
+        description: "Count of different countries group members are from"

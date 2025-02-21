@@ -5,12 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 7 * * 1' 
-
-env:
-  # dbt env variables used in your dbt profiles.yml
-  DBT_PROFILES_DIR: ./
-  DBT_GOOGLE_KEYFILE: /tmp/google/google-service-account.json
+    - cron: '0 7 * * 1'
 
 jobs:
   run-query:
@@ -23,10 +18,6 @@ jobs:
       uses: 'google-github-actions/auth@v2'
       with:
         credentials_json: '${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}'
-
-    # Prep Google keyfile
-    - run: mkdir -p "$(dirname $DBT_GOOGLE_KEYFILE)" 
-    - run: echo "$KEYFILE_CONTENTS" > $DBT_GOOGLE_KEYFILE
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -47,7 +38,11 @@ jobs:
         echo "${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}" > "${{ github.workspace }}/gha-creds.json"
         export GOOGLE_APPLICATION_CREDENTIALS="${{ github.workspace }}/gha-creds.json"
 
-    - name: Run basic dbt model
+    - name: Run basic dbt stg models
       run: |
         dbt build --models stg_venues stg_events stg_users stg_groups
+    
+    - name: Run dbt mrt models
+      run: |
+        dbt build --models mrt_events
     

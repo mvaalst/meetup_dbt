@@ -7,6 +7,6 @@ SELECT DISTINCT
     city AS user_city,
     country AS user_country,
     hometown AS user_hometown,
-    TIMESTAMP_MILLIS(joined) AS joined_group,
+    DATETIME(TIMESTAMP_MILLIS(joined), 'Europe/Amsterdam') AS joined_group,
     group_id
 FROM stg_users

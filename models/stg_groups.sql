@@ -8,7 +8,7 @@ SELECT
     city AS group_city,
     lon,
     lat,
-    TIMESTAMP_MILLIS(created) AS group_created,
+    DATETIME(TIMESTAMP_MILLIS(created), 'Europe/Amsterdam') AS group_created,
     description AS group_description,
     link,
     name AS group_name

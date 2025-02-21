@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: mrt_events
+    description: "Mart model basic transformations of events data"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - group_id
+            - meetup_name
+            - meetup_time
+    columns:
+      - name: group_id
+        description: "Unique identifier for the group"
+        tests:
+          - not_null
+      - name: meetup_name
+        description: "Name of the meetup"
+        tests:
+          - not_null
+      - name: meetup_description
+        description: "Description of the meetup"
+      - name: meetup_created
+        description: "Date and time the meetup was created"
+        tests:
+          - not_null
+      - name: meetup_time
+        description: "Date and time the meetup will take or has taken place"
+      - name: duration
+        description: "Duration of the meetup in minutes"
+      - name: rsvp_limit
+        description: "Maximum number of attendees allowed"
+      - name: venue_id
+        description: "Unique identifier for the venue"
+        tests:
+          - not_null
+      - name: status
+        description: "Status of the meetup"
+      - name: total_invited_guests
+        description: "Total number of invited guests"
+      - name: cnt_rsvp_yes
+        description: "Number of attendees who RSVP'd yes"
+      - name: cnt_rsvp_no
+        description: "Number of attendees who RSVP'd no"
+      - name: guests_per_meetup
+        description: "Total number of guests for this meetup"
