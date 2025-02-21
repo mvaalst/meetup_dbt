@@ -1,9 +1,5 @@
 WITH base_events AS (
-    SELECT
-        * EXCEPT(row_num),
-        ROW_NUMBER() OVER (PARTITION BY group_id, meetup_name, meetup_time ORDER BY meetup_created DESC) AS row_num
-    FROM {{ ref('stg_events') }}
-    QUALIFY row_num = 1
+    SELECT * FROM {{ ref('stg_events') }}
 ),
 
 base_venues AS (
@@ -31,3 +27,4 @@ FROM base_events
 LEFT JOIN base_venues
     USING(venue_id)
 GROUP BY ALL
+QUALIFY ROW_NUMBER() OVER (PARTITION BY group_id, meetup_name, meetup_time ORDER BY meetup_created DESC) = 1
