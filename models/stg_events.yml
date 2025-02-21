@@ -3,6 +3,13 @@ version: 2
 models:
   - name: stg_events
     description: "Staging model loading in raw events data"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - group_id
+            - meetup_name
+            - user_id
+            - meetup_time
     columns:
       - name: group_id
         description: "Unique identifier for the group"
