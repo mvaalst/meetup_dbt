@@ -1,5 +1,9 @@
 WITH base_events AS (
-    SELECT * FROM {{ ref('stg_events') }}
+    SELECT
+        * EXCEPT(row_num),
+        ROW_NUMBER() OVER (PARTITION BY group_id, meetup_name, meetup_time ORDER BY meetup_created DESC) AS row_num
+    FROM {{ ref('stg_events') }}
+    QUALIFY row_num = 1
 )
 
 SELECT
