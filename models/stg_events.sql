@@ -4,8 +4,8 @@ WITH stg_events AS (
 
 SELECT 
     group_id,
-    name,
-    description,
+    name AS meetup_name,
+    description AS meetup_description,
     TIMESTAMP_MILLIS(created) AS meetup_created,
     TIMESTAMP_MILLIS(CAST(time AS INT64)) AS meetup_time,
     SAFE_DIVIDE(duration, 60000) AS duration,

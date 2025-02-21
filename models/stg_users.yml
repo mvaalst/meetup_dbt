@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: "Staging model loading in raw user data"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - user_id
+          - joined_group
+          - group_id
+    columns:
+      - name: user_id
+        description: "Unique identifier for the user"
+        tests:
+          - not_null
+      - name: user_city
+        description: "City where the user is located"
+        tests:
+          - not_null
+      - name: user_country
+        description: "Country where the user is located"
+        tests:
+          - not_null
+      - name: hometown
+        description: "User's hometown"
+        tests:
+          - not_null
+      - name: joined_group
+        description: "Date the user joined this specific group"
+        tests:
+          - not_null
+      - name: group_id
+        description: "Unique identifier for the group"
+        tests:
+          - not_null
