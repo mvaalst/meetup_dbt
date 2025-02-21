@@ -1,9 +1,9 @@
 WITH mrt_events AS (
-    SELECT * FROM {{ source('mrt_events') }}
+    SELECT * FROM {{ ref('mrt_events') }}
 ),
 
 mrt_groups AS (
-    SELECT * FROM {{ source('mrt_groups') }}
+    SELECT * FROM {{ ref('mrt_groups') }}
 )
 
 SELECT *
