@@ -45,4 +45,5 @@ jobs:
 
     - name: Run basic dbt model
       run: |
-        dbt run --models stg_venues
+        dbt build --models stg_venues stg_events
+    
