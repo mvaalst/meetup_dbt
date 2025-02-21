@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_events
+    description: "Staging model loading in raw events data"
+    columns:
+      - name: group_id
+        description: "Unique identifier for the group"
+        tests:
+          - not_null
+      - name: name
+        description: "Name of the meetup"
+        tests:
+          - not_null
+      - name: description
+        description: "Description of the meetup"
+      - name: meetup_created
+        description: "Date and time the meetup was created"
+        tests:
+          - not_null
+      - name: meetup_time
+        description: "Date and time the meetup will take or has taken place"
+        tests:
+          - not_null
+      - name: duration
+        description: "Duration of the meetup in minutes"
+      - name: rsvp_limit
+        description: "Maximum number of attendees allowed"
+      - name: venue_id
+        description: "Unique identifier for the venue"
+        tests:
+          - not_null
+      - name: status
+        description: "Status of the meetup"
+      - name: user_id
+        description: "Unique identifier for the user who received an invitation to the meetup"
+        tests:
+          - not_null
+      - name: time_rsvpd
+        description: "Date and time the user RSVP'd to the meetup"
+      - name: response
+        description: "User's response to the meetup"
+      - name: guests 
+        description: "Number of guests the user is bringing or has taken to the meetup"

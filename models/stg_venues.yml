@@ -9,3 +9,19 @@ models:
         tests:
           - unique
           - not_null
+      - name: city
+        description: "City where the venue is located"
+        tests:
+          - not_null
+      - name: country
+        description: "Country where the venue is located"
+        tests:
+          - not_null
+      - name: name
+        description: "Name of the venue"
+        tests:
+          - not_null
+      - name: latitude
+        description: "Latitude of the venue"
+      - name: longitude
+        description: "Longitude of the venue"
