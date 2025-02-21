@@ -16,7 +16,7 @@ SELECT
     stg_events.when AS time_rsvpd,
     response,
     guests,
-    ROW_NUMBER() OVER (PARTITION BY group_id, name, created, CAST(time AS INT64) ORDER BY created DESC) AS row_num
+    ROW_NUMBER() OVER (PARTITION BY group_id, name, CAST(time AS INT64), user_id ORDER BY created DESC) AS row_num
 FROM stg_events
 WHERE
     status IN ('upcoming', 'past')
