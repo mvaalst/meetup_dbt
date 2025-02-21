@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: mrt_users
+    description: "Mart model for user information"
+    columns:
+      - name: user_id
+        description: "Unique identifier for the user"
+        tests:
+          - not_null
+          - unique
+      - name: user_city
+        description: "Country where the user is located"
+      - name: user_country
+        description: "Country where the user is located"
+      - name: first_joined_group
+        description: "Date when the user first joined a group"
+      - name: last_joined_group
+        description: "Date when the user last joined a group"
+      - name: cnt_groups_joined
+        description: "Number of groups the user has joined"

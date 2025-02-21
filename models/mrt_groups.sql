@@ -26,7 +26,7 @@ group_users AS (
         MIN(joined_group) AS first_joiner,
         MAX(joined_group) AS last_joiner,
         COUNT(DISTINCT user_country) AS cnt_countries
-    FROM 
+    FROM base_users
     GROUP BY 1
 )
 
