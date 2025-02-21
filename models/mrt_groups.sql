@@ -10,6 +10,8 @@ group_topics AS (
     SELECT
         group_id,
         group_city,
+        lon,
+        lat,
         group_created,
         group_description,
         group_name,
@@ -33,6 +35,8 @@ group_users AS (
 SELECT
     g.group_id,
     g.group_city,
+    g.lon,
+    g.lat,
     g.group_created,
     g.group_description,
     g.group_name,

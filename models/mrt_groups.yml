@@ -11,6 +11,10 @@ models:
           - unique
       - name: group_city
         description: "Country where the group is located"
+      - name: lon
+        description: "Longitude of the group location"
+      - name: lat
+        description: "Latitude of the group location"
       - name: group_created
         description: "Date the group was created"
       - name: group_description
