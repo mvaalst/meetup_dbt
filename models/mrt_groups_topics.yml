@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: mrt_groups_topics
+    description: "Mart model for group information and what topics the group is interested in"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - group_id
+            - topic
+    columns:
+      - name: group_id
+        description: "Unique identifier for the group"
+        tests:
+          - not_null
+      - name: topic
+        description: "Topic the group is interested in"
+        tests:
+          - not_null
