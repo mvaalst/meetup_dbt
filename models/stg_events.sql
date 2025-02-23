@@ -19,8 +19,8 @@ WITH stg_events AS (
 unique_events AS (
   SELECT 
     group_id,
-    meetup_created,
-    meetup_time
+    meetup_time,
+    MAX(meetup_created) AS meetup_created
   FROM stg_events
   WHERE
       status IN ('upcoming', 'past')
