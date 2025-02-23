@@ -48,4 +48,4 @@ jobs:
 
     - name: Run dbt reporting model
       run: |
-        dbt build --models reporting_model
+        dbt build --models reporting_model reporting_groups
