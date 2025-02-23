@@ -44,7 +44,7 @@ jobs:
     
     - name: Run dbt mrt models
       run: |
-        dbt build --models mrt_events mrt_groups mrt_users
+        dbt build --models mrt_events mrt_groups mrt_users mrt_groups_topics
 
     - name: Run dbt reporting model
       run: |
