@@ -31,3 +31,4 @@ SELECT *
 FROM stg_events
 INNER JOIN unique_events
   USING(group_id, meetup_created, meetup_time)
+QUALIFY ROW_NUMBER() OVER(PARTITION BY group_id, meetup_created, meetup_time, user_id ORDER BY time_rsvpd DESC) = 1
