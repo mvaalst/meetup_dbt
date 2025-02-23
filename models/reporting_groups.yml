@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: reporting_groups
+    description: "Reporting model for groups"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - group_id
+            - topic
+    columns:
+      - name: group_id
+        description: "Unique identifier for the group"
+        tests:
+          - not_null
+      - name: group_city
+        description: "Country where the group is located"
+      - name: lon
+        description: "Longitude of the group location"
+      - name: lat
+        description: "Latitude of the group location"
+      - name: group_created
+        description: "Date the group was created"
+      - name: group_description
+        description: "Description of the group"
+      - name: group_name
+        description: "Name of the group"
+        tests:
+          - not_null
+      - name: cnt_topics
+        description: "Count of different topics group is interested in"
+      - name: cnt_members
+        description: "Count of members in the group"
+      - name: first_joiner
+        description: "Date of the first member joining the group"
+      - name: last_joiner
+        description: "Date of the last member joining the group"
+      - name: cnt_countries
+        description: "Count of different countries group members are from"
+      - name: days_since_last_joiner
+        description: "Days since the last member joined the group"

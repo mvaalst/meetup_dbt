@@ -9,7 +9,7 @@ SELECT
     lon,
     lat,
     DATETIME(TIMESTAMP_MILLIS(created), 'Europe/Amsterdam') AS group_created,
-    description AS group_description,
+    REGEXP_REPLACE(description, r'<[^>]+>', '') AS group_description,
     link,
     name AS group_name
 FROM stg_groups
