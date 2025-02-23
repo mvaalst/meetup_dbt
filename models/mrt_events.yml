@@ -8,6 +8,7 @@ models:
           combination_of_columns:
             - group_id
             - meetup_time
+            - meetup_name
     columns:
       - name: group_id
         description: "Unique identifier for the group"
