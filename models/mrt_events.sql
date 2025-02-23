@@ -27,4 +27,3 @@ FROM base_events
 LEFT JOIN base_venues
     USING(venue_id)
 GROUP BY ALL
-QUALIFY ROW_NUMBER() OVER (PARTITION BY group_id, meetup_name, meetup_time ORDER BY meetup_created DESC) = 1
