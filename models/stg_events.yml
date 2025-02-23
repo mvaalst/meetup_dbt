@@ -7,7 +7,7 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - group_id
-            - meetup_name
+            - meetup_created
             - user_id
             - meetup_time
     columns:
