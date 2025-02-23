@@ -10,10 +10,10 @@ WITH stg_events AS (
       venue_id,
       CASE WHEN DATETIME(TIMESTAMP_MILLIS(CAST(time AS INT64)), 'Europe/Amsterdam') < CURRENT_DATETIME() THEN 'past' ELSE 'upcoming' END AS status,
       user_id,
-      DATETIME(TIMESTAMP_MILLIS(CAST(`raw_data.events`.when AS INT64)), 'Europe/Amsterdam') AS time_rsvpd,
+      DATETIME(TIMESTAMP_MILLIS(CAST(raw_data.when AS INT64)), 'Europe/Amsterdam') AS time_rsvpd,
       response,
       guests
-    FROM {{ source('raw_data', 'events') }}
+    FROM {{ source('raw_data', 'events') }} AS raw_data
 ),
 
 unique_events AS (
